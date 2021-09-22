@@ -1,5 +1,4 @@
 const chalk = require('chalk');
-const { argv } = require('yargs');
 const yargs = require('yargs');
 
 const notes = require('./notes');
@@ -17,13 +16,13 @@ yargs.command({
             demandOption: true,
             type: 'string'
         },
-        description: {
-            describe: 'Note Description',
+        body: {
+            describe: 'Note Body',
             demandOption: true,
             type: 'string'
         }
     },
-    handler: (argv) => console.log(`Title: ${argv.title}\nBody: ${argv.description}`)
+    handler: (argv) => notes.addNote(argv.title, argv.body)
 });
 
 // Create list command
